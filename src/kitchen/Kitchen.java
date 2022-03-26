@@ -1,5 +1,6 @@
 package kitchen;
 
+import main.RamenPanel;
 import utils.ImageLoader;
 
 import java.awt.*;
@@ -15,7 +16,7 @@ public class Kitchen {
 
     public void drawKitchen(Graphics2D g2){
         AffineTransform at = g2.getTransform();
-        g2.drawImage(kitchenImg, 0, 0);
+        g2.drawImage(kitchenImg, 0, 0, RamenPanel.WIDTH, RamenPanel.HEIGHT, null);
         g2.setTransform(at);
     }
 }
