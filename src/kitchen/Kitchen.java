@@ -11,6 +11,7 @@ public class Kitchen {
     private BufferedImage kitchenImg;
 
     public Kitchen(String file){
+
         kitchenImg = ImageLoader.loadImage(file);
     }
 
