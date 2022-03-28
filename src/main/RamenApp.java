@@ -7,7 +7,8 @@ public class RamenApp extends JFrame {
         //constructor
         super(title);	//that inherits from JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1200,800);	//Panel size
+        this.setLocation(0, 0);
+
 
         //instantiating the FishPanel
         RamenPanel panel = new RamenPanel(this);
