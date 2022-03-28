@@ -1,36 +1,40 @@
 package kitchen;
 
+import equipment.Equipment;
 import utils.ImageLoader;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-public class Switch{
+public abstract class Switch{
     //field
-    protected Rectangle2D.Double button;
-    private BufferedImage img;
-    private boolean lightOn = false;
-    private boolean fireOn = false;
-    private boolean waterOn = false;
+    protected Integer xPos;
+    protected Integer yPos;
+    protected double scale;
+    protected BufferedImage img;
+    protected boolean trigger = false;
+    protected Effect effect;
+    protected Rectangle2D.Double boundBox;
 
-    public Switch(){
-        img = ImageLoader.loadImage("assets/DarkFilter.png");
+    public Switch(String sw, double scale, int xPos, int yPos){
+        img = ImageLoader.loadImage(sw);
+        this.scale = scale;
+        this.xPos = xPos;
+        this. yPos = yPos;
+        boundBox = new Rectangle2D.Double((xPos), (yPos), ((img.getWidth()*scale)), ((img.getHeight()*scale)));
 
-        img = ImageLoader.loadImage("assets/WaterOn.png");
-
-        img = ImageLoader.loadImage("assets/RightFireOn.png");
-        img = ImageLoader.loadImage("assets/LeftFireOn.png");
     }
 
-    public void draw(Graphics2D g){
-        if(!lightOn){
+    public abstract void draw(Graphics2D g);
 
+    public void setTrigger(){
+        if(trigger){
+            trigger = false;
         }
-    }
-
-    public void lightOn(boolean on){
-        lightOn = on;
+        else{
+            trigger = true;
+        }
     }
 
     public void fireOn(boolean on){
@@ -39,5 +43,13 @@ public class Switch{
 
     public void waterOn(boolean on){
         waterOn = on;
+    }
+
+    public boolean hit(Equipment equipment){
+        return effect.hit(equipment);
+    }
+
+    public Effect getEffect() {
+        return effect;
     }
 }
