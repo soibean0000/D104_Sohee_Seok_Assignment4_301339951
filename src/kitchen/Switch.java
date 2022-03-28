@@ -37,12 +37,10 @@ public abstract class Switch{
         }
     }
 
-    public void fireOn(boolean on){
-        fireOn = on;
-    }
-
-    public void waterOn(boolean on){
-        waterOn = on;
+    public void clicked(double x, double y){
+        if(boundBox.contains(x, y)){
+            setTrigger();
+        }
     }
 
     public boolean hit(Equipment equipment){
