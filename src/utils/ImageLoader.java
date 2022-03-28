@@ -8,9 +8,10 @@ public class ImageLoader {
     public static BufferedImage loadImage(String fileName){
         BufferedImage bufImg = null;
         try{
-            bufImg = ImageIO.read(new File(fileName));
+            File file = new File(fileName);
+            bufImg = ImageIO.read(file);
         }catch (IOException e){
-            System.out.println("Your image file is either missing or corrupted!");
+            System.out.println("Your image file is either missing or corrupted! " + fileName);
         }
         return bufImg;
     }
