@@ -10,10 +10,12 @@ public class RamenApp extends JFrame {
         this.setSize(1200,800);	//Panel size
 
         //instantiating the FishPanel
-        RamenPanel panel = new RamenPanel(this.getSize());
+        RamenPanel panel = new RamenPanel(this);
 
         //adding it to the current frame
         this.add(panel);
+        this.pack();
+        this.setLocationRelativeTo(null);
 
         //displaying the frame
         this.setVisible(true);
